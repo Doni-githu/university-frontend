@@ -1,0 +1,122 @@
+<template>
+    <div class="container">
+        <template v-if="!isLoadingProfile && user">
+
+            <div class="left">
+                <h1 style="color: var(--blue);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{ user.firstName }} {{
+                    user.lastName }}</h1>
+                <form @submit.prevent>
+                    <div class="flex2">
+                        <div class="flex">
+                            <label for="email">Telefon nomer</label>
+                            <input id="email" class="input" disabled :value="user.phone" />
+                        </div>
+                        <div class="flex">
+                            <label for="email">Talim yo'nalishi</label>
+                            <input id="email" class="input" disabled :value="user.type" />
+                        </div>
+                    </div>
+                    <div class="flex2">
+                        <div class="flex">
+                            <label for="email">Passport</label>
+                            <input id="email" class="input" disabled :value="user.passport" />
+                        </div>
+                        <div class="flex">
+                            <label for="email">Viloyat</label>
+                            <input id="email" class="input" disabled :value="user.place.region" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </template>
+        <template v-else>
+            <div style="display: flex; justify-content: center;">
+                <p>Loading</p>
+            </div>
+        </template>
+    </div>
+</template>
+<script>
+import { mapState } from 'vuex';
+
+export default {
+    mounted() {
+        this.$store.dispatch('getProfile', this.$route.params.id)
+        if(!localStorage.getItem('token')){
+            this.$router.push('/profile/' + '6481a776505f395b4767f856')
+        }
+    },
+    computed: {
+        ...mapState({
+            user: state => state.auth.profile,
+            isLoadingProfile: state => state.auth.isLoadingProfile,
+            profile: state => state.auth.user
+        })
+    }
+}
+</script>
+<style scoped>
+.flex2 {
+    display: flex;
+    gap: 20px;
+}
+
+input {
+    padding: 10px 12px;
+    outline: 1.3px solid #2A8CFF;
+    border-radius: 4px;
+    border: none;
+    font-size: 17px;
+    transition: all .15s;
+    color: #2A8CFF;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.btn button {
+    padding: 10px 15px;
+    border: none;
+    background-color: red;
+    color: #fff;
+    border-radius: 12px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input:focus {
+    outline: 4px solid #2A8CFF;
+}
+
+.form-float {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+.borderLeft {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+label {
+    color: #2A8CFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+</style>

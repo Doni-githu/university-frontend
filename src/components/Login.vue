@@ -41,11 +41,7 @@ export default {
 
             this.$store.dispatch('login', user)
                 .then((user) => {
-                    if(user.rol === 'student'){
-                        this.$router.push(`/profile/${user._id}`)
-                    }else{
-                        this.$router.push(`/admin/${user._id}`)
-                    }
+                    this.$router.push(`/admin/${user._id}`)
                 })
         }
     }

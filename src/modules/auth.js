@@ -129,7 +129,6 @@ const actions = {
             Auth.getAll()
                 .then(res => {
                     context.commit('SuccessGetAllProfiles', res.data)
-                    console.log(res.data)
                     resolve(res.data)
                 }).catch((err) => {
                     context.commit('FailurGetAllProfiles')

@@ -7,7 +7,7 @@
 import Register from '../components/Register.vue';
 
 export default {
-    components: { Register }
+  components: { Register }
 }
 </script>
 <style>

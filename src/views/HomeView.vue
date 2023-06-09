@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hosh sahifa</h1>
+    <h1>Bosh sahifa</h1>
   </div>
 </template>
 <script>

@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <div class="left">
-            <h1 style="margin-bottom: 2rem; color: #2A8CFF;">Akkount yasash</h1>
             <template v-if="error">
                 <Alert :type="'danger'" :error="error" />
             </template>
@@ -12,14 +11,9 @@
                         <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
                     </div>
                     <div class="flex">
-                        <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
-                        <Input :maxlength="400" :type="'password'" :placeholder="'Parolni qayta tering'"
-                            v-model="rePassword" />
-                    </div>
-                    <div class="flex">
                         <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
                         <div class="form-floatw">
-                            <p>Viloyat </p>
+                            <p>Manzil (viloyat) </p>
                             <select @change="event => onChangeValue({ type: 'tuman', e: event })">
                                 <option v-for="viloyat in viloyatlar">{{ viloyat.tuman }}</option>
                             </select>
@@ -27,24 +21,46 @@
                     </div>
                     <div class="flex">
                         <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
-                        <Input :type="'text'" :placeholder="`Talim yo'nalishingiz`" v-model="yonalish" />
+                        <div class="form-floatw">
+                            <p>Talim yonalishi</p>
+                            <select @change="event => onChangeValue({ type: 'talim', e: event })">
+                                <option v-for="yonalish in yonalishlar" :key="yonalish.id">{{ yonalish.txt }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
+                        <div class="form-floatw">
+                            <p>Talim yonalishi</p>
+                            <select @change="e => onChangeValue({ type: 'yonalish', e: e })">
+                                <option v-for="price in prices" :key="price.id">
+                                    {{ price.txt }}. {{ price.price }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="form-floatw">
+                            <p>Talim yonalishi</p>
+                            <select @change="e => onChangeValue({ type: 'til', e: e })">
+                                <option disabled>Tilni tanlang</option>
+                                <option>Rus tili</option>
+                                <option>Uzbek tili</option>
+                            </select>
+                        </div>
                     </div>
                     <div>
-                        <button @click="onSumbit" class="btn">Yasash</button>
+                        <button @click="onSumbit" style="width: 100%; margin-top: 2rem; margin-bottom: 2rem;"
+                            class="btn btn-outline-primary">Yasash</button>
                     </div>
                 </form>
             </template>
             <template v-else>
                 <form @submit.prevent>
                     <Input :type="'text'" :placeholder="'Kodni yozing'" v-model="token" />
-                    <div>
-                        <button @click="onSumbitCode" class="btn">Otish</button>
-                    </div>
+                    <button @click="onSumbitCode" class="btn btn-outline-primary">Otish</button>
                 </form>
             </template>
-        </div>
-        <div class="right">
-            <img src="/sign.jpg">
         </div>
     </div>
 </template>
@@ -105,12 +121,140 @@ export default {
                     tuman: "Qoraqalpog'iston"
                 }
             ],
-            yonalish: '',
+            yonalishlar: [
+                {
+                    txt: 'Moliya va moliyaviy tenxnalogiyalar',
+                    id: 1
+                },
+                {
+                    txt: 'Buxgalteriya hisobi va audit',
+                    id: 2
+                },
+                {
+                    txt: 'Pedagogika va psixalogiya',
+                    id: 3,
+                },
+                {
+                    txt: "Boshlang'ich ta'lim",
+                    id: 4
+                },
+                {
+                    txt: "Maktabgacha ta'lim",
+                    id: 5
+                },
+                {
+                    txt: 'I.T (dasturiy injinering)',
+                    id: 6
+                },
+                {
+                    txt: 'Filalogigya',
+                    id: 7
+                }
+            ],
+            yonalish: "Moliya va moliyaviy tenxnalogiyalar",
+            kontrat: '14 000 000',
+            prices: [
+                {
+                    txt: 'Sintqi',
+                    price: '14 000 000',
+                    id: 1,
+                },
+                {
+                    txt: 'Kundizgi',
+                    price: '11 800 000',
+                    id: 2
+                },
+            ],
+            lang: 'Rus tili',
             passport: "",
             error: "",
+            price: "Sintqi",
             rePassword: '',
             userToken: ""
         };
+    },
+    beforeCreate() {
+        if (localStorage.getItem('token')) {
+            this.$router.back()
+        }
+    },
+    watch: {
+        yonalish(value) {
+            if (value === "Buxgalteriya hisobi va audit") {
+                this.prices = [
+                    {
+                        txt: 'Sintqi',
+                        price: '14 000 000',
+                        id: 1,
+                    },
+                    {
+                        txt: 'Kundizgi',
+                        price: '11 800 000',
+                        id: 2
+                    },
+                ]
+            } else if (value === "Pedagogika va psixalogiya") {
+                this.prices = [
+                    {
+                        txt: 'Sintqi',
+                        price: '12 000 000',
+                        id: 1,
+                    },
+                    {
+                        txt: 'Kundizgi',
+                        price: '9 800 000',
+                        id: 2
+                    },
+                ]
+            } else if (value === "Boshlang'ich ta'lim") {
+                this.prices = [
+                    {
+                        txt: 'Sintqi',
+                        price: '12 000 000',
+                        id: 1,
+                    },
+                    {
+                        txt: 'Kundizgi',
+                        price: '9 800 000',
+                        id: 2
+                    },
+                ]
+            } else if (value === "Maktabgacha ta'lim") {
+                this.prices = [
+                    {
+                        txt: 'Sintqi',
+                        price: '12 000 000',
+                        id: 1,
+                    },
+                    {
+                        txt: 'Kundizgi',
+                        price: '9 800 000',
+                        id: 2
+                    },
+                ]
+            } else if (value === "I.T (dasturiy injinering)") {
+                this.prices = [
+                    {
+                        txt: 'Sintqi',
+                        price: '12 000 000',
+                        id: 1,
+                    },
+                    {
+                        txt: 'Kundizgi',
+                        price: '10 800 000',
+                        id: 2
+                    },
+                ]
+            } else if (value === 'Filalogigya') {
+                this.prices = [
+                    {
+                        txt: 'Kundizgi',
+                        price: '12 000 000',
+                        id: 2
+                    },
+                ]
+            }
+        }
     },
     methods: {
         onChangeValue({ type, e }) {
@@ -119,10 +263,17 @@ export default {
             }
             else if (type === "tuman") {
                 this.tuman = e.target.value;
+            } else if (type === "talim") {
+                this.yonalish = e.target.value
+            } else if (type === 'yonalish') {
+                this.price = e.target.value.split('. ')[0]
+                this.kontrat = e.target.value.split('. ')[1]
+            } else if (type === 'til') {
+                this.lang = e.target.value
             }
         },
         onSumbit() {
-            if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.rePassword) {
+            if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang) {
                 this.error = "Barcha maydonlar talab qilinadi";
                 return;
             }
@@ -136,6 +287,9 @@ export default {
                     region: this.tuman
                 },
                 type: this.yonalish,
+                lang: this.lang,
+                time: this.price,
+                price: this.kontrat,
                 rol: 'student'
             };
             this.$store.dispatch("register", user)
@@ -155,15 +309,6 @@ export default {
                 }).catch((err) => {
                     console.log(err);
                 });
-        }
-    },
-    watch: {
-        rePassword(newValue) {
-            if (newValue !== this.password) {
-                this.error = "Parol xato"
-            } else {
-                this.error = ''
-            }
         }
     },
     components: {
@@ -190,6 +335,7 @@ select {
     padding: 10px 15px;
     font-size: 16px;
     border: none;
+    width: 100%;
     outline: 2px solid #2A8CFF;
     transition: all .1s;
     color: #2A8CFF;
@@ -202,20 +348,22 @@ select:focus {
 
 .form-floatw {
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 10px;
     color: #2A8CFF;
 }
 
 .right img {
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 21px;
+    width: 100%;
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: auto;
 }
 
 .flex {
@@ -223,20 +371,6 @@ form {
     gap: 20px;
 }
 
-.btn {
-    padding: 13px 30px;
-    background-color: transparent;
-    color: #2A8CFF;
-    border: none;
-    outline: 2px solid #2A8CFF;
-    border-radius: 10px;
-    filter: brightness(120%);
-    transition: all .1s;
-}
-
-.btn:active {
-    filter: brightness(80%);
-}
 
 @media only screen and (max-width:1200px) {
     .container {

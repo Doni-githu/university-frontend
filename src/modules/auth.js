@@ -8,6 +8,7 @@ const state = {
     profile: null,
     isLoadingProfile: false,
     profiles: null,
+    isDirector: null
 }
 
 const mutations = {
@@ -17,6 +18,11 @@ const mutations = {
     SuccessRegisterAndLoginAndGetUser(state, payload) {
         state.isLoading = false
         state.isLoggedIn = true
+        state.user = payload
+    },
+    SuccessRegisterDirector(state, payload) {
+        state.isLoading = false
+        state.isDirector = true
         state.user = payload
     },
     FailurRegisterAndLoginAndGetUser(state, payload) {
@@ -42,17 +48,17 @@ const mutations = {
     StartSendToken(state) {
         state.isLoading = true
     },
-    SuccessSendToken(state){
+    SuccessSendToken(state) {
         state.isLoading = false
     },
-    StartGetAllProfiles(state){
+    StartGetAllProfiles(state) {
         state.isLoadingProfile = true
     },
-    SuccessGetAllProfiles(state, payload){
+    SuccessGetAllProfiles(state, payload) {
         state.profiles = payload
         state.isLoadingProfile = false
     },
-    FailurGetAllProfiles(state){
+    FailurGetAllProfiles(state) {
         state.isLoadingProfile = false
     }
 }
@@ -77,6 +83,11 @@ const actions = {
             context.commit('StartRegisterAndLoginAndGetUser')
             Auth.getUser()
                 .then((res) => {
+                    if (res.data.rol === 'Director') {
+                        context.commit('SuccessRegisterDirector', res.data)
+                    }else{
+                        context.commit('SuccessRegisterAndLoginAndGetUser', res.data)
+                    }
                     context.commit('SuccessRegisterAndLoginAndGetUser', res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -95,13 +106,19 @@ const actions = {
         })
     },
     login(context, user) {
-        new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             context.commit('StartRegisterAndLoginAndGetUser')
             Auth.login(user)
                 .then((res) => {
                     localStorage.setItem('token', res.data.token)
-                    context.commit('SuccessRegisterAndLoginAndGetUser', res.data.user)
-                    resolve(res.data.user)
+                    console.log(res)
+                    if (res.data.rol === 'Director') {
+                        context.commit('SuccessRegisterDirector', res.data.user)
+                        resolve(`/admin/${res.data.user._id}`)
+                    }else{
+                        context.commit('SuccessRegisterAndLoginAndGetUser', res.data.user)
+                        resolve(`/profile/${res.data.user._id}`)
+                    }
                 }).catch((err) => {
                     console.log(err)
                     context.commit('FailurRegisterAndLoginAndGetUser', err.response.data.message)
@@ -109,7 +126,7 @@ const actions = {
                 })
         })
     },
-    sendToken(context, { id, token, userToken}) {
+    sendToken(context, { id, token, userToken }) {
         return new Promise((resolve) => {
             context.commit('StartSendToken')
             Auth.step2(id, token, userToken)
@@ -123,7 +140,7 @@ const actions = {
                 })
         })
     },
-    getProfiles(context){
+    getProfiles(context) {
         return new Promise((resolve) => {
             context.commit('StartGetAllProfiles')
             Auth.getAll()

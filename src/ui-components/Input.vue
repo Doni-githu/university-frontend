@@ -47,6 +47,7 @@ input:focus{
 }
 
 .form-float{
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
     gap: 10px;

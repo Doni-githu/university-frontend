@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <div class="left">
-            <h1 style="margin-bottom: 2rem; color: #2A8CFF;">Akkount ga kirish</h1>
             <template v-if="error">
                 <p style="color: red;">{{ error }}</p>
             </template>
@@ -28,8 +27,8 @@ export default {
         }
     },
     methods: {
-        onLogIn() {
-            if (!this.phone || !this.password) {
+        async onLogIn() {
+            if (!this.phone) {
                 this.error = 'Barcha maydonlar talab qilinadi'
                 return
             }
@@ -40,9 +39,14 @@ export default {
             }
 
             this.$store.dispatch('login', user)
-                .then((user) => {
-                    this.$router.push(`/admin/${user._id}`)
+                .then(res => {
+                    this.$router.push(res)
                 })
+        }
+    },
+    beforeCreate(){
+        if(localStorage.getItem('token')){
+            this.$router.back()
         }
     }
 }
@@ -112,6 +116,7 @@ form {
     border: none;
     outline: 2px solid #2A8CFF;
     border-radius: 10px;
+    margin-bottom: 2rem;
     font-size: 16px;
     filter: brightness(120%);
     transition: all .1s;

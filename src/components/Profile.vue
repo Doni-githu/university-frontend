@@ -3,8 +3,9 @@
         <template v-if="!isLoadingProfile && user">
 
             <div class="left">
-                <h1 style="color: var(--blue);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{ user.firstName }} {{
-                    user.lastName }}</h1>
+                <h1 style="color: var(--blue);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{
+                    user.firstName }} {{
+        user.lastName }}</h1>
                 <form @submit.prevent>
                     <div class="flex2">
                         <div class="flex">
@@ -26,6 +27,22 @@
                             <input id="email" class="input" disabled :value="user.place.region" />
                         </div>
                     </div>
+                    <div class="flex2">
+                        <div class="flex">
+                            <label for="email">O'qiyotgan tili</label>
+                            <input id="email" class="input" disabled :value="user.lang" />
+                        </div>
+                        <div class="flex">
+                            <label for="email">Kantrak puli</label>
+                            <input id="email" class="input" disabled :value="user.price" />
+                        </div>
+                    </div>
+                    <div class="flex2">
+                        <div class="flex">
+                            <label for="email">O'qish vaqti</label>
+                            <input id="email" class="input" disabled :value="user.time" />
+                        </div>
+                    </div>
                 </form>
             </div>
         </template>
@@ -42,7 +59,7 @@ import { mapState } from 'vuex';
 export default {
     mounted() {
         this.$store.dispatch('getProfile', this.$route.params.id)
-        if(!localStorage.getItem('token')){
+        if (!localStorage.getItem('token')) {
             this.$router.push('/profile/' + '6481a776505f395b4767f856')
         }
     },

@@ -1,17 +1,17 @@
 <template>
     <div class="navbar">
         <h1 @click="() => $router.push('/')">Brand</h1>
-        <template v-if="!isLoggedIn">
+        <template v-if="!user">
             <div class="btn-group">
                 <button @click="() => $router.push('/login')">Kirish</button>
                 <button @click="() => $router.push('/register')">Registratiya</button>
             </div>
         </template>
         <template v-else>
-            <Icon @click="change">{{ user.firstName ? String(user.firstName).substring(0, 1).toUpperCase() : 'A' }}</Icon>
+            <Icon @click="change">{{ user.firstName ? user.firstName.substring(0, 1).toUpperCase() : 'A' }}</Icon>
             <template v-if="modal">
                 <ul class="pos">
-                    <template v-if="user.rol === 'student'">
+                    <template v-if="user?.rol === 'student'">
                         <li @click="toProfile">Profile</li>
                     </template>
                     <template v-else>
@@ -34,8 +34,16 @@ export default {
     computed: {
         ...mapState({
             isLoggedIn: state => state.auth.isLoggedIn,
-            user: state => state.auth.user
-        })
+            user: state => state.auth.user,
+            isDirector: state => state.auth.isDirector
+        }),
+        isLoggedInFunction() {
+            if (!localStorage.getItem('token')) {
+                return false
+            } else {
+                return true
+            }
+        }
     },
     methods: {
         async toProfile() {
@@ -53,7 +61,8 @@ export default {
         },
         logout() {
             this.$store.commit('LogOut')
-        }
+        },
+
     }
 }
 </script>

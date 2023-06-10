@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="user, index in users" :key="user._id" @click="() => toProfile(user._id)">
-                        <td>{{ index }}</td>
+                        <td>{{ index + 1 }}</td>
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.passport }}</td>
@@ -42,6 +42,12 @@ export default {
             this.$router.push("/login");
         }
     },
+    updated () {
+        if (!localStorage.getItem('token')) {
+            this.$router.push("/login");
+        }
+    },
+    
     data() {
         return {
             users: []

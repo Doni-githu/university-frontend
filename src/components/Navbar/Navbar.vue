@@ -142,4 +142,8 @@ button {
     border-color: transparent;
     background-color: var(--black);
 }
+
+@media only screen and (max-width:363px){
+    
+}
 </style>

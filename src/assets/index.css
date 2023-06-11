@@ -3,7 +3,7 @@
 :root {
     --green: #198754;
     --blue: #2A8CFF;
-    --black: rgba(0, 0, 0, 0.5);
+    --black: rgb(0, 0, 0);
 }
 
 * {

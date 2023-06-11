@@ -124,21 +124,24 @@ export default {
 
 .cards-container {
     width: 90%;
+    justify-content: space-between;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
 }
-.time{
+
+.time {
     display: flex;
 }
-.time p{
+
+.time p {
     padding: 5px 10px;
     font-size: 18px;
     border-right: 1px solid var(--black);
 }
 
-.time p:last-child{
+.time p:last-child {
     border-right: none;
 }
 
@@ -156,7 +159,12 @@ export default {
     border-radius: 40px;
 }
 
-.p1{
-    
+@media only screen and (max-width:1000px) {
+    .cards{
+        justify-content: space-between;
+    }
+    .cards-container{
+        justify-content: center;
+    }
 }
 </style>

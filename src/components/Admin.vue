@@ -96,4 +96,10 @@ th {
     padding: 10px;
     text-align: center;
 }
+
+@media only screen and (max-width:400px) {
+    .users{
+        width: 100%;
+    }
+}
 </style>

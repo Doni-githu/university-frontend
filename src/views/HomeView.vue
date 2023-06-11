@@ -18,6 +18,5 @@ export default {
 <style scoped>
 .end2 {
   margin: 500px 0;
-  
 }
 </style>

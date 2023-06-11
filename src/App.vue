@@ -27,13 +27,18 @@ export default {
 #app {
   background: linear-gradient(rgba(255, 255, 255, 0.51), rgba(0, 0, 0, 0)), url('/back.png');
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-position: top;
 }
 
 main {
   width: 80%;
   min-height: 100vh;
   margin: 0 auto;
+}
+
+@media only screen and (max-width:577px) {
+  main {
+    width: 95%;
+  }
 }
 </style>

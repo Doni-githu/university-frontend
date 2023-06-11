@@ -8,7 +8,6 @@
                 <form @submit.prevent>
                     <div class="left-form">
                         <Input :maxlength="50" :type="'text'" :placeholder="'Ism'" v-model="firstName" />
-                        <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
                         <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
                         <div class="form-floatw">
                             <p>Manzil (viloyat) </p>
@@ -20,6 +19,7 @@
                         <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
                     </div>
                     <div class="right-form">
+                        <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
                         <div class="form-floatw">
                             <p>Talim tili</p>
                             <select @change="e => onChangeValue({ type: 'til', e: e })">
@@ -315,12 +315,8 @@ export default {
 <style scoped>
 .container {
     display: flex;
-    color: #fff !important;
     justify-content: center;
     align-items: center;
-}
-*{
-    color: var(--black) !important;
 }
 .left {
     width: 50%;
@@ -349,13 +345,13 @@ export default {
     background-color: transparent;
     border: none;
     color: #fff !important;
-    outline: 2px solid var(--black);
+    outline: 2px solid #000;
     border-radius: 4px;
     transition: all .1s;
 }
 
 .btn2:hover {
-    outline: 4px solid var(--black);
+    outline: 4px solid #000;
 }
 
 .end {
@@ -372,18 +368,18 @@ select {
     border: none;
     width: 100%;
     background-color: transparent;
-    outline: 2px solid var(--black);
+    outline: 2px solid #000;
     transition: all .1s;
-    color: var(--black);
+    color: #000;
     border-radius: 5px;
 }
 
 * {
-    color: var(--black) !important;
+    color: #000 !important;
 }
 
 select:focus {
-    outline: 4px solid var(--black);
+    outline: 4px solid #000;
 }
 
 .form-floatw {
@@ -391,7 +387,7 @@ select:focus {
     width: 100%;
     flex-direction: column;
     gap: 10px;
-    color: var(--black);
+    color: #000;
 }
 
 .right img {

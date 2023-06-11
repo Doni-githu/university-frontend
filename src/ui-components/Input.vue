@@ -2,9 +2,12 @@
     <div class="form-float">
         <div style="display: flex; align-items: center;">
             <template v-if="placeholder === 'Telefon nomer'">
-                <p style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 10px 12px; background-color: #2A8CFF; outline: 2px solid #2A8CFF; color: #fff;">+998</p>
+                <p
+                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 10px 12px; background-color: var(--black); outline: 2px solid var(--black); color: #fff;">
+                    +998</p>
             </template>
-            <input :maxlength="maxlength" :class="placeholder === 'Telefon nomer' ? 'borderLeft': ''" :type="type" :id="placeholder" :value="modelValue" @input="onChangeInput">
+            <input :maxlength="maxlength" :class="placeholder === 'Telefon nomer' ? 'borderLeft' : ''" :type="type"
+                :id="placeholder" :value="modelValue" @input="onChangeInput">
         </div>
         <label :for="placeholder">{{ placeholder }}</label>
     </div>
@@ -25,48 +28,49 @@ export default {
         modelValue: [Number, String]
     },
     methods: {
-        onChangeInput(e){
+        onChangeInput(e) {
             this.$emit('update:modelValue', e.target.value)
         }
     }
 }
 </script>
 <style scoped>
-input{
+input {
     width: 100%;
     padding: 10px 12px;
-    outline: 1.3px solid #2A8CFF;
+    outline: 1.3px solid var(--black);
     border-radius: 4px;
     border: none;
+    background-color: transparent;
     font-size: 17px;
     transition: all .15s;
-    color: #2A8CFF;
-}
-input:focus{
-    outline: 4px solid #2A8CFF;
+    color: var(--black);
 }
 
-.form-float{
+input:focus {
+    outline: 4px solid var(--black);
+}
+
+.form-float {
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
     gap: 10px;
 }
-p{
+
+p {
     margin-bottom: 0;
 }
-.borderLeft{
+
+.borderLeft {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-label{
-    color: #2A8CFF;
+label {
+    color: var(--black);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-}
-
-
-</style>
+}</style>

@@ -1,10 +1,10 @@
 <template>
     <div class="navbar">
-        <h1 @click="() => $router.push('/')">Brand</h1>
+        <h1 @click="() => $router.push('/')" style="font-weight: 300;">Brand</h1>
         <template v-if="!user">
             <div class="btn-group">
                 <button @click="() => $router.push('/login')">Kirish</button>
-                <button @click="() => $router.push('/register')">Registratiya</button>
+                <button @click="() => $router.push('/register')">Royxattan o'tish</button>
             </div>
         </template>
         <template v-else>
@@ -61,6 +61,7 @@ export default {
         },
         logout() {
             this.$store.commit('LogOut')
+            this.$router.push('/')
         },
 
     }
@@ -80,7 +81,8 @@ export default {
 h1 {
     user-select: none;
     cursor: pointer;
-    color: var(--blue);
+    background-color: 4px solid var(--black);
+    color: var(--black);
 }
 
 .btn-gruop {
@@ -90,13 +92,14 @@ h1 {
 .btn-group button:first-child {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
-    border: 2px solid #2A8CFF;
-    color: #2A8CFF;
+    border: 2px solid var(--black);
+    color: #fff;
 }
 
-.btn-group button:first-child:focus {
+.btn-group button:first-child:hover {
     color: #fff;
-    background-color: #2A8CFF;
+    border-color: transparent;
+    background-color: var(--black);
 }
 
 button {
@@ -112,13 +115,13 @@ button {
 .pos {
     position: absolute;
     right: 0;
-    bottom: -80px;
+    top: 75%;
     border-radius: 12px;
     list-style: none;
     padding: 10px 15px;
     display: flex;
     flex-direction: column;
-    background-color: var(--blue);
+    background-color: var(--black);
 }
 
 .pos li {
@@ -130,12 +133,13 @@ button {
 .btn-group button:nth-child(2) {
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
-    border: 2px solid var(--green);
-    color: var(--green);
+    border: 2px solid var(--black);
+    color: #fff;
 }
 
-.btn-group button:nth-child(2):focus {
+.btn-group button:nth-child(2):hover {
     color: #fff;
-    background-color: var(--green);
+    border-color: transparent;
+    background-color: var(--black);
 }
 </style>

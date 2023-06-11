@@ -3,7 +3,7 @@
         <template v-if="!isLoadingProfile && user">
 
             <div class="left">
-                <h1 style="color: var(--blue);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{
+                <h1 style="color: var(--black);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{
                     user.firstName }} {{
         user.lastName }}</h1>
                 <form @submit.prevent>
@@ -80,12 +80,12 @@ export default {
 
 input {
     padding: 10px 12px;
-    outline: 1.3px solid #2A8CFF;
+    outline: 1.3px solid var(--black);
     border-radius: 4px;
     border: none;
     font-size: 17px;
     transition: all .15s;
-    color: #2A8CFF;
+    color: var(--black);
 }
 
 form {
@@ -115,7 +115,7 @@ form {
 }
 
 input:focus {
-    outline: 4px solid #2A8CFF;
+    outline: 4px solid var(--black);
 }
 
 .form-float {
@@ -130,7 +130,7 @@ input:focus {
 }
 
 label {
-    color: #2A8CFF;
+    color: var(--black);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

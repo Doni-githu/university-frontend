@@ -7,13 +7,8 @@
             <form @submit.prevent>
                 <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="phone" />
                 <Input :maxlength="50" :type="'password'" :placeholder="'Parol'" v-model="password" />
-                <div>
-                    <button @click="onLogIn" class="btn">Kirish</button>
-                </div>
+                <button @click="onLogIn" class="btn2">Kirish</button>
             </form>
-        </div>
-        <div class="right">
-            <img src="/log.jpg">
         </div>
     </div>
 </template>
@@ -44,8 +39,8 @@ export default {
                 })
         }
     },
-    beforeCreate(){
-        if(localStorage.getItem('token')){
+    beforeCreate() {
+        if (localStorage.getItem('token')) {
             this.$router.back()
         }
     }
@@ -109,23 +104,21 @@ form {
     gap: 20px;
 }
 
-.btn {
-    padding: 13px 30px;
-    background-color: transparent;
-    color: #2A8CFF;
-    border: none;
-    outline: 2px solid #2A8CFF;
-    border-radius: 10px;
-    margin-bottom: 2rem;
+.btn2 {
+    padding: 10px 15px;
+    font-weight: 400;
     font-size: 16px;
-    filter: brightness(120%);
+    background-color: transparent;
+    border: none;
+    color: #fff !important;
+    outline: 2px solid var(--black);
+    border-radius: 4px;
     transition: all .1s;
 }
 
-.btn:active {
-    filter: brightness(80%);
+.btn2:hover {
+    outline: 4px solid var(--black);
 }
-
 @media only screen and (max-width:1200px) {
     .container {
         flex-direction: column-reverse;

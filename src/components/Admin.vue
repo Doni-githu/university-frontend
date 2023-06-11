@@ -1,5 +1,5 @@
 <template>
-    <template v-if="!isLoadingProfile && users">
+    <template v-if="users">
         <div class="users">
             <table>
                 <thead>
@@ -23,7 +23,7 @@
             </table>
         </div>
     </template>
-    <template v-else-if="!isLoadingProfile && !users">
+    <template v-else>
         <Loading />
     </template>
 </template>
@@ -36,7 +36,7 @@ export default {
         this.$store.dispatch("getProfile", this.$route.params.id);
         this.$store.dispatch("getProfiles")
             .then((res) => {
-                this.users = this.users.concat(res)
+                this.users = res
             })
         if (!localStorage.getItem('token')) {
             this.$router.push("/login");
@@ -50,7 +50,7 @@ export default {
     
     data() {
         return {
-            users: []
+            users: null
         };
     },
     ...mapState({
@@ -71,8 +71,8 @@ export default {
 table,
 tr,
 td {
-    border: 1px solid var(--blue);
-    color: var(--blue);
+    border: 1px solid var(--black);
+    color: var(--black);
 }
 
 tbody tr {

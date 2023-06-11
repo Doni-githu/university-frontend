@@ -6,11 +6,9 @@
             </template>
             <template v-if="!id">
                 <form @submit.prevent>
-                    <div class="flex">
+                    <div class="left-form">
                         <Input :maxlength="50" :type="'text'" :placeholder="'Ism'" v-model="firstName" />
                         <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
-                    </div>
-                    <div class="flex">
                         <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
                         <div class="form-floatw">
                             <p>Manzil (viloyat) </p>
@@ -18,40 +16,37 @@
                                 <option v-for="viloyat in viloyatlar">{{ viloyat.tuman }}</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="flex">
                         <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
-                        <div class="form-floatw">
-                            <p>Talim yonalishi</p>
-                            <select @change="event => onChangeValue({ type: 'talim', e: event })">
-                                <option v-for="yonalish in yonalishlar" :key="yonalish.id">{{ yonalish.txt }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="flex">
                         <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
-                        <div class="form-floatw">
-                            <p>Talim yonalishi</p>
-                            <select @change="e => onChangeValue({ type: 'yonalish', e: e })">
-                                <option v-for="price in prices" :key="price.id">
-                                    {{ price.txt }}. {{ price.price }}
-                                </option>
-                            </select>
-                        </div>
                     </div>
-                    <div class="flex">
+                    <div class="right-form">
                         <div class="form-floatw">
-                            <p>Talim yonalishi</p>
+                            <p>Talim tili</p>
                             <select @change="e => onChangeValue({ type: 'til', e: e })">
-                                <option disabled>Tilni tanlang</option>
-                                <option>Rus tili</option>
                                 <option>Uzbek tili</option>
+                                <option>Rus tili</option>
                             </select>
                         </div>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <p>Talim yonalishi</p>
+                            <div v-for="yonalish in yonalishlar" :key="yonalish.id" style="display: flex; gap: 5px;">
+                                <input type="radio" name="talim" @change="e => onChangeValue({ type: 'talim', e: e })"
+                                    :id="yonalish.id" :value="yonalish.txt">
+                                <label :for="yonalish.id">{{ yonalish.txt }}</label>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <p>Talim vaqti</p>
+                            <div @click="e => onChangeValue({ type: 'yonalish', e: e })" v-for="{ ...rest } in prices"
+                                style="display: flex; gap: 5px;">
+                                <input name="price" type="radio" :id="rest.id" :value="`${rest.txt}. ${rest.price}`">
+                                <label :for="rest.id">{{ rest.txt }} {{ rest.price }}</label>
+                            </div>
+                        </div>
                     </div>
-                    <div>
+                    <div class="end">
                         <button @click="onSumbit" style="width: 100%; margin-top: 2rem; margin-bottom: 2rem;"
-                            class="btn btn-outline-primary">Yasash</button>
+                            class="btn2">Royxattan o'tish</button>
                     </div>
                 </form>
             </template>
@@ -264,6 +259,7 @@ export default {
             else if (type === "tuman") {
                 this.tuman = e.target.value;
             } else if (type === "talim") {
+                console.dir(e.target)
                 this.yonalish = e.target.value
             } else if (type === 'yonalish') {
                 this.price = e.target.value.split('. ')[0]
@@ -319,12 +315,51 @@ export default {
 <style scoped>
 .container {
     display: flex;
+    color: #fff !important;
     justify-content: center;
     align-items: center;
 }
-
+*{
+    color: var(--black) !important;
+}
 .left {
     width: 50%;
+}
+
+.left-form {
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.right-form {
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.btn2 {
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    color: #fff !important;
+    outline: 2px solid var(--black);
+    border-radius: 4px;
+    transition: all .1s;
+}
+
+.btn2:hover {
+    outline: 4px solid var(--black);
+}
+
+.end {
+    grid-area: end;
 }
 
 .right {
@@ -336,14 +371,19 @@ select {
     font-size: 16px;
     border: none;
     width: 100%;
-    outline: 2px solid #2A8CFF;
+    background-color: transparent;
+    outline: 2px solid var(--black);
     transition: all .1s;
-    color: #2A8CFF;
+    color: var(--black);
     border-radius: 5px;
 }
 
+* {
+    color: var(--black) !important;
+}
+
 select:focus {
-    outline: 4px solid #2A8CFF;
+    outline: 4px solid var(--black);
 }
 
 .form-floatw {
@@ -351,7 +391,7 @@ select:focus {
     width: 100%;
     flex-direction: column;
     gap: 10px;
-    color: #2A8CFF;
+    color: var(--black);
 }
 
 .right img {
@@ -362,8 +402,10 @@ select:focus {
 form {
     width: 100%;
     display: grid;
-    row-gap: 10px;
-    grid-template-columns: auto;
+    grid-template-areas:
+        "left right"
+        "end end";
+    column-gap: 16px;
 }
 
 .flex {

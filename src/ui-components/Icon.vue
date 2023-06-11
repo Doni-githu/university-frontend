@@ -1,9 +1,7 @@
 <template>
-    <div class="icon">
-        <p>
-            <slot></slot>
-        </p>
-    </div>
+    <p class="icon">
+        <slot></slot>
+    </p>
 </template>
 <script>
 export default {
@@ -11,16 +9,17 @@ export default {
 }
 </script>
 <style scoped>
-.icon{
+.icon {
     color: #fff;
     border-radius: 50%;
-    background-color: var(--blue);
-    font-size: 20px;
+    background-color: var(--black);
+    font-size: 24px;
     cursor: pointer;
     user-select: none;
-}
-
-.icon p{
-    padding: 10px 18px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

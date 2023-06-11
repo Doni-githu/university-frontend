@@ -318,6 +318,7 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
 .left {
     width: 50%;
 }
@@ -438,8 +439,16 @@ form {
 
 @media only screen and (max-width:500px) {
     form {
-        flex-wrap: wrap;
+        grid-template-areas: 
+        "left"
+        "right"
+        "end";
         width: 100%;
+    }
+
+
+    .btn2{
+        color: #000 !important;
     }
 
     .flex {

@@ -169,4 +169,5 @@ label {
         display: grid;
         grid-template-columns: auto;
     }
-}</style>
+}
+</style>

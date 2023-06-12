@@ -33,7 +33,7 @@
                             </div>
                             <Input :maxlength="9" :type="'number'" :placeholder="'Telefon raqam'" v-model="number" />
                             <div class="form-floatw">
-                                <p>Ta'lim yonalishingiz</p>
+                                <p>Ta'lim yonalishi</p>
                                 <select @change="e => onChangeValue({ type: 'talim', e: e })">
                                     <option v-for="yonalish in yonalishlar" :value="`${yonalish.txt}`" :key="yonalish.id">{{
                                         yonalish.txt }}</option>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-floatw">
                                 <p>Ta'lim turi</p>
-                                <select @change="e => onChangeValue({ type: 'talim', e: e })">
+                                <select @change="e => onChangeValue({ type: 'yonalish', e: e })">
                                     <option v-for="price in prices" :value="`${price.txt}. ${price.price}`" :key="price.id">{{
                                         price.txt }}</option>
                                 </select>

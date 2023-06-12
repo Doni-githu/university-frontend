@@ -22,7 +22,7 @@
                                     <option v-for="viloyat in viloyatlar">{{ viloyat.tuman }}</option>
                                 </select>
                             </div>
-                            <Input :maxlength="50" :type="'text'" :placeholder="'Tuman (shahar)'" />
+                            <Input :maxlength="50" :type="'text'" :placeholder="'Tuman (shahar)'" v-model="tuman2" />
                             <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
                             <div class="form-floatw">
                                 <p>Talim tili</p>
@@ -281,7 +281,7 @@ export default {
         },
         onSumbit() {
             if (this.second) {
-                if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang) {
+                if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang || this.tuman2) {
                     this.error = "Barcha maydonlar talab qilinadi";
                     return;
                 }

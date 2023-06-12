@@ -44,12 +44,12 @@ input {
     background-color: transparent;
     font-size: 17px;
     transition: all .15s;
-    color: #fff;
+    color: #000;
+    background-color: #fff;
 }
 
 input:focus {
     outline: 4px solid var(--bs-gray-dark);
-    background-color: #fff;
     color: #000;
 }
 

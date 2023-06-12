@@ -7,17 +7,33 @@
                         <th>N:</th>
                         <th>Ism</th>
                         <th>Familiya</th>
+                        <th>Otchestva</th>
+                        <th>Tug'ulgan sana</th>
+                        <th>Manzil (hudud)</th>
+                        <th>Tuman (shahar)</th>
                         <th>Passport</th>
+                        <th>Ta'lim tili</th>
+                        <th>Ta'lim turi</th>
+                        <th>Ta'lim yo'nalishi</th>
                         <th>telefon nomer</th>
+                        <th>Parol</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user, index in users" :key="user._id" @click="() => toProfile(user._id)">
+                    <tr v-for="user, index in users" :key="user._id">
                         <td>{{ index + 1 }}</td>
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
+                        <td>{{ user.father_name }}</td>
+                        <td>{{ user.date_of_birth }}</td>
+                        <td>{{ user.place.region }}</td>
+                        <td>{{ user.place.tuman }}</td>
                         <td>{{ user.passport }}</td>
+                        <td>{{ user.lang }}</td>
+                        <td>{{ user.time }}</td>
+                        <td>{{ user.type }}</td>
                         <td>{{ user.phone }}</td>
+                        <td>{{ user.password }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -71,17 +87,16 @@ export default {
 table,
 tr,
 td {
-    border: 1px solid var(--black);
-    color: var(--black);
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
     transition: all .2s;
 }
 
-table:hover,
-td:hover,
-th:hover {
-    color: #000;
-    background-color: #fff;
+td{
+    padding: 10px;
 }
+
 
 
 tbody tr {
@@ -92,11 +107,20 @@ tbody tr {
 
 .users {
     width: 90%;
+    overflow-y: auto;
     margin: 0 auto;
 }
+::-webkit-scrollbar{
+    width: 4px;
+    height: 2px;
+}
 
+::-webkit-slider-thumb{
+    background-color: red;
+}
 table {
-    width: 100%;
+    width: 90%;
+    overflow-x: hidden !important;
 }
 
 td {
@@ -106,11 +130,5 @@ td {
 th {
     padding: 10px;
     text-align: center;
-}
-
-@media only screen and (max-width:400px) {
-    .users {
-        width: 100%;
-    }
 }
 </style>

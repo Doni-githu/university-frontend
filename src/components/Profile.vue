@@ -47,6 +47,12 @@
                             <input id="email" class="input" disabled :value="user.date_of_birth" />
                         </div>
                     </div>
+                    <div class="flex2">
+                        <div class="flex">
+                            <label for="tuman">Tuman</label>
+                            <input type="text" class="input" disabled :value="user.place.tuman">
+                        </div>
+                    </div>
                 </form>
             </div>
         </template>

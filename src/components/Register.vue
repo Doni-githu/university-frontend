@@ -25,7 +25,7 @@
                             <Input :maxlength="50" :type="'text'" :placeholder="'Tuman (shahar)'" v-model="tuman2" />
                             <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
                             <div class="form-floatw">
-                                <p>Talim tili</p>
+                                <p>Ta'lim tili</p>
                                 <select @change="e => onChangeValue({ type: 'til', e: e })">
                                     <option>Uzbek tili</option>
                                     <option>Rus tili</option>
@@ -33,7 +33,7 @@
                             </div>
                             <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
                             <div>
-                                <p>Talim yonalishingiz</p>
+                                <p>Ta'lim yonalishingiz</p>
                                 <div class="items" v-for="yonalish in yonalishlar" :key="yonalish.id">
                                     <input type="radio" name="talim" @change="e => onChangeValue({ type: 'talim', e: e })"
                                         :id="yonalish.id" :value="yonalish.txt">
@@ -303,10 +303,13 @@ export default {
                     date_of_birth: this.birth_of_day,
                     father_name: this.otchest
                 };
+                this.isLoading = true
                 this.$store.dispatch("register", user)
                     .then((res) => {
+                        this.isLoading = false
                         this.$router.push(`/profile/${res._id}`)
                     }).catch((err) => {
+                        this.isLoading = false
                         this.error = err.message;
                     });
             } else {
@@ -354,13 +357,12 @@ select {
     background-color: transparent;
     font-size: 17px;
     transition: all .15s;
-    color: #495057;
+    color: #000;
+    background-color: #fff;
 }
 
 select:focus{
     outline-width: 4px;
-    background-color: #fff;
-    color: #000;
 }
 
 .form2 {

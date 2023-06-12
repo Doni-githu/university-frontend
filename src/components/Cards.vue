@@ -3,7 +3,6 @@
         <div class="cards-container">
             <div class="card" v-for="item in data" :key="item.txt">
                 <h3 class="p1">{{ item.txt }}</h3>
-                <em class="p2">faoliyat yo'nalishi bo'yicha</em>
                 <p class="p3">TA'LIM SHAKLLARI</p>
                 <div style="display: grid; grid-template-columns: auto auto auto; column-gap: 15px;">
                     <p v-for="price in item.prices">{{ price.txt }}</p>

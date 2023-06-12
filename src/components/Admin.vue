@@ -107,6 +107,7 @@ tbody tr {
 
 .users {
     width: 90%;
+    height: 600px;
     overflow-y: auto;
     margin: 0 auto;
 }
@@ -120,7 +121,8 @@ tbody tr {
 }
 table {
     width: 90%;
-    overflow-x: hidden !important;
+    height: 400px;
+    overflow: auto !important;
 }
 
 td {

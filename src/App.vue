@@ -110,7 +110,7 @@ export default {
         prices: [
           {
             txt: 'Kunduzgi',
-            price: '12 00 000',
+            price: '12 000 000',
             id: 2
           },
           {

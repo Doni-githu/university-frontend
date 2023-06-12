@@ -203,7 +203,6 @@ export default {
             } else if (type === "talim") {
                 this.yonalish = e.target.value
             } else if (type === 'yonalish') {
-                console.log(e.target.value)
                 this.price = e.target.value.split('. ')[0]
                 this.kontrat = e.target.value.split('. ')[1]
             } else if (type === 'til') {

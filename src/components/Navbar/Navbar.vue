@@ -1,10 +1,10 @@
 <template>
     <div class="navbar">
-        <h1 @click="() => $router.push('/')" style="font-weight: 300;">Brand</h1>
+        <img src="/NII.png"  @click="() => $router.push('/')" style="font-weight: 300; width: 60px; height: 60px;" />
         <template v-if="!user">
             <div class="btn-group">
                 <button @click="() => $router.push('/login')">Kirish</button>
-                <button @click="() => $router.push('/register')">Royxattan o'tish</button>
+                <button @click="() => $router.push('/register')">Ro'yxatdan o'tish</button>
             </div>
         </template>
         <template v-else>
@@ -147,6 +147,9 @@ button {
 @media only screen and (max-width:363px){
     .navbar{
         display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 5rem;
         flex-wrap: wrap;
     }
 }

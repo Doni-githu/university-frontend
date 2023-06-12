@@ -1,10 +1,10 @@
 <template>
     <div class="kirish">
         <div class="box">
-            <h1>Nukus innovatsion instituti Guliston Filiali</h1>
+            <h1>Nukus innovatsion instituti Guliston qabuli</h1>
             <div class="btn2">
                 <button>
-                    <a href="#end2">T'alim yo'nalishlari</a>
+                    <a href="#end2">Ta'lim yo'nalishlari</a>
                 </button>
             </div>
         </div>

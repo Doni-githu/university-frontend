@@ -7,15 +7,15 @@
                         <th>N:</th>
                         <th>Ism</th>
                         <th>Familiya</th>
-                        <th>Otchestva</th>
-                        <th>Tug'ulgan sana</th>
+                        <th>Otasining ismi</th>
+                        <th>Tug'ilgan sana</th>
                         <th>Manzil (hudud)</th>
                         <th>Tuman (shahar)</th>
                         <th>Passport</th>
                         <th>Ta'lim tili</th>
                         <th>Ta'lim turi</th>
                         <th>Ta'lim yo'nalishi</th>
-                        <th>telefon nomer</th>
+                        <th>Telefon raqam</th>
                         <th>Parol</th>
                     </tr>
                 </thead>

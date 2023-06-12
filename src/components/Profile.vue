@@ -9,7 +9,7 @@
                 <form @submit.prevent>
                     <div class="flex2">
                         <div class="flex">
-                            <label for="email">Telefon nomer</label>
+                            <label for="email">Telefon raqam</label>
                             <input id="email" class="input" disabled :value="user.phone" />
                         </div>
                         <div class="flex">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="flex2">
                         <div class="flex">
-                            <label for="email">Passport</label>
+                            <label for="email">Passport seriya raqami</label>
                             <input id="email" class="input" disabled :value="user.passport" />
                         </div>
                         <div class="flex">
@@ -33,17 +33,17 @@
                             <input id="email" class="input" disabled :value="user.lang" />
                         </div>
                         <div class="flex">
-                            <label for="email">Kantrak puli</label>
+                            <label for="email">Kontrakt to'lov summasi</label>
                             <input id="email" class="input" disabled :value="user.price" />
                         </div>
                     </div>
                     <div class="flex2">
                         <div class="flex">
-                            <label for="email">O'qish vaqti</label>
+                            <label for="email">Ta'lim turi</label>
                             <input id="email" class="input" disabled :value="user.time" />
                         </div>
                         <div class="flex">
-                            <label for="email">Tug'ulgan sana</label>
+                            <label for="email">Tug'ilgan sana</label>
                             <input id="email" class="input" disabled :value="user.date_of_birth" />
                         </div>
                     </div>

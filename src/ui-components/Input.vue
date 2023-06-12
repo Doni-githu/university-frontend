@@ -2,12 +2,12 @@
     <div class="form-float">
         <label :for="placeholder">{{ placeholder }}</label>
         <div style="display: flex; align-items: center;">
-            <template v-if="placeholder === 'Telefon nomer'">
+            <template v-if="placeholder === 'Telefon raqam'">
                 <p
                     style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 10px 12px; background-color: var(--bs-gray-dark); outline: 2px solid var(--bs-gray-dark); color: #fff;">
                     +998</p>
             </template>
-            <input :maxlength="maxlength" :class="placeholder === 'Telefon nomer' ? 'borderLeft' : ''" :type="type"
+            <input :maxlength="maxlength" :class="placeholder === 'Telefon raqam' ? 'borderLeft' : ''" :type="type"
                 :id="placeholder" :value="modelValue" @input="onChangeInput">
         </div>
     </div>

@@ -1,14 +1,14 @@
 <template>
     <div class="cards">
         <div class="cards-container">
-            <div class="card" v-for="item in arr" :key="item.txt">
+            <div class="card" v-for="item in data" :key="item.txt">
                 <h3 class="p1">{{ item.txt }}</h3>
                 <em class="p2">faoliyat yo'nalishi bo'yicha</em>
                 <p class="p3">TA'LIM SHAKLLARI</p>
                 <div class="time">
                     <p v-for="price in item.prices" :key="price.id">{{ price.txt }}</p>
                 </div>
-                <p>To'lov Shartnoma</p>
+                <p>To'lov shartnoma</p>
                 <div class="time">
                     <p v-for="price in item.prices" :key="price.id">{{ price.price }}</p>
                 </div>
@@ -23,97 +23,7 @@ export default {
     components: {
         Card
     },
-    data() {
-        return {
-            arr: [
-                {
-                    txt: "Moliya va moliyaviy tenxnalogiyalar",
-                    prices: [
-                        {
-                            txt: 'Sintqi',
-                            price: '14 000 000',
-                            id: 1,
-                        },
-                        {
-                            txt: 'Kundizgi',
-                            price: '11 800 000',
-                            id: 2
-                        },
-                    ]
-                },
-                {
-                    txt: 'Buxgalteriya hisobi va audit',
-                    prices: [
-                        {
-                            txt: 'Sintqi',
-                            price: '14 000 000',
-                            id: 1,
-                        },
-                        {
-                            txt: 'Kundizgi',
-                            price: '11 800 000',
-                            id: 2
-                        },
-                    ]
-                },
-                {
-                    txt: 'Pedagogika va psixalogiya',
-                    prices: [
-                        {
-                            txt: 'Sintqi',
-                            price: '12 000 000',
-                            id: 1,
-                        },
-                        {
-                            txt: 'Kundizgi',
-                            price: '9 800 000',
-                            id: 2
-                        },
-                    ]
-                },
-                {
-                    txt: "Boshlang'ich ta'lim",
-                    prices: [
-                        {
-                            txt: 'Sintqi',
-                            price: '12 000 000',
-                            id: 1,
-                        },
-                        {
-                            txt: 'Kundizgi',
-                            price: '9 800 000',
-                            id: 2
-                        },
-                    ]
-                },
-                {
-                    txt: "I.T (dasturiy injinering)",
-                    prices: [
-                        {
-                            txt: 'Sintqi',
-                            price: '12 000 000',
-                            id: 1,
-                        },
-                        {
-                            txt: 'Kundizgi',
-                            price: '10 800 000',
-                            id: 2
-                        },
-                    ]
-                },
-                {
-                    txt: "Filalogigya",
-                    prices: [
-                        {
-                            txt: 'Kundizgi',
-                            price: '12 000 000',
-                            id: 2
-                        },
-                    ]
-                },
-            ]
-        }
-    },
+    inject: ['data'],
 }
 </script>
 <style scoped>
@@ -124,7 +34,7 @@ export default {
 
 .cards-container {
     width: 90%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;

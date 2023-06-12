@@ -5,7 +5,7 @@
                 <p style="color: red;">{{ error }}</p>
             </template>
             <form @submit.prevent>
-                <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="phone" />
+                <Input :maxlength="9" :type="'number'" :placeholder="'Telefon raqam'" v-model="phone" />
                 <Input :maxlength="50" :type="'password'" :placeholder="'Parol'" v-model="password" />
                 <button @click="onLogIn" class="btn2">Kirish</button>
             </form>
@@ -24,7 +24,7 @@ export default {
     methods: {
         async onLogIn() {
             if (!this.phone) {
-                this.error = 'Barcha maydonlar talab qilinadi'
+                this.error = `Barcha maydonlar to'ldirish talab qilinadi`
                 return
             }
 

@@ -8,9 +8,9 @@
                 <div class="form">
                     <template v-if="!second">
                         <div class="form2">
-                            <Input :maxlength="50" :type="'text'" :placeholder="'Ismingiz'" v-model="firstName" />
-                            <Input :maxlength="50" :type="'text'" :placeholder="'Familiyangiz'" v-model="lastName" />
-                            <Input :maxlength="50" :type="'text'" :placeholder="`Ochistivangiz`" v-model="otchest" />
+                            <Input :maxlength="50" :type="'text'" :placeholder="'Ismi'" v-model="firstName" />
+                            <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
+                            <Input :maxlength="50" :type="'text'" :placeholder="`Otasining ismi`" v-model="otchest" />
                             <Input :maxlength="50" :type="'date'" :placeholder="`Tug'ilgan sana`" v-model="birth_of_day" />
                         </div>
                     </template>
@@ -23,22 +23,15 @@
                                 </select>
                             </div>
                             <Input :maxlength="50" :type="'text'" :placeholder="'Tuman (shahar)'" v-model="tuman2" />
-                            <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
+                            <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriyasi'" v-model="passport" />
                             <div class="form-floatw">
                                 <p>Ta'lim tili</p>
                                 <select @change="e => onChangeValue({ type: 'til', e: e })">
-                                    <option>Uzbek tili</option>
+                                    <option>O'zbek tili</option>
                                     <option>Rus tili</option>
                                 </select>
                             </div>
-                            <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
-                            <div class="form-floatw">
-                                <p>Ta'lim tili</p>
-                                <select @change="e => onChangeValue({ type: 'til', e: e })">
-                                    <option>Uzbek tili</option>
-                                    <option>Rus tili</option>
-                                </select>
-                            </div>
+                            <Input :maxlength="9" :type="'number'" :placeholder="'Telefon raqam'" v-model="number" />
                             <div class="form-floatw">
                                 <p>Ta'lim yonalishingiz</p>
                                 <select @change="e => onChangeValue({ type: 'talim', e: e })">
@@ -50,7 +43,7 @@
                                 <p>Ta'lim turi</p>
                                 <select @change="e => onChangeValue({ type: 'talim', e: e })">
                                     <option v-for="price in prices" :value="`${price.txt}. ${price.price}`" :key="price.id">{{
-                                        price.txt }} {{ price.price }}</option>
+                                        price.txt }}</option>
                                 </select>
                             </div>
                             <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
@@ -58,7 +51,7 @@
                     </template>
                 </div>
                 <div style="display: flex; justify-content: center;">
-                    <button @click="onSumbit" class="btn2">{{ second ? "Royhattan o'tish" : 'Davom etish ' }}</button>
+                    <button @click="onSumbit" class="btn2">{{ second ? "Ro'yxatdan o'tish" : 'Davom etish ' }}</button>
                 </div>
             </form>
         </div>
@@ -126,7 +119,7 @@ export default {
             ],
             yonalishlar: [
                 {
-                    txt: 'Moliya va moliyaviy tenxnalogiyalar',
+                    txt: 'Moliya va moliyaviy texnologiyalar',
                     id: 1
                 },
                 {
@@ -134,7 +127,7 @@ export default {
                     id: 2
                 },
                 {
-                    txt: 'Pedagogika va psixalogiya',
+                    txt: 'Pedagogika va psixologiya',
                     id: 3,
                 },
                 {
@@ -146,28 +139,33 @@ export default {
                     id: 5
                 },
                 {
-                    txt: 'I.T (dasturiy injinering)',
+                    txt: 'I.T (dasturiy injiniring)',
                     id: 6
                 },
                 {
-                    txt: 'Filalogigya',
+                    txt: 'Filologiya',
                     id: 7
                 }
             ],
             birth_of_day: '',
-            yonalish: "Moliya va moliyaviy tenxnalogiyalar",
+            yonalish: "Moliya va moliyaviy texnologiyalar",
             kontrat: '14 000 000',
             prices: [
                 {
-                    txt: 'Sintqi',
+                    txt: 'Sirtqi',
                     price: '14 000 000',
                     id: 1,
                 },
                 {
-                    txt: 'Kundizgi',
+                    txt: 'Kunduzgi',
                     price: '11 800 000',
                     id: 2
                 },
+                {
+                    txt: 'Masofaviy',
+                    price: '14 000 000',
+                    id: 3,
+                }
             ],
             second: false,
             thred: false,
@@ -176,7 +174,7 @@ export default {
             lang: 'Rus tili',
             passport: "",
             error: "",
-            price: "Sintqi",
+            price: "Sirtqi",
             rePassword: '',
             userToken: "",
             isLoading: false,
@@ -187,82 +185,11 @@ export default {
             this.$router.back()
         }
     },
+    inject: ['data'],
     watch: {
         yonalish(value) {
-            if (value === "Buxgalteriya hisobi va audit") {
-                this.prices = [
-                    {
-                        txt: 'Sintqi',
-                        price: '14 000 000',
-                        id: 1,
-                    },
-                    {
-                        txt: 'Kundizgi',
-                        price: '11 800 000',
-                        id: 2
-                    },
-                ]
-            } else if (value === "Pedagogika va psixalogiya") {
-                this.prices = [
-                    {
-                        txt: 'Sintqi',
-                        price: '12 000 000',
-                        id: 1,
-                    },
-                    {
-                        txt: 'Kundizgi',
-                        price: '9 800 000',
-                        id: 2
-                    },
-                ]
-            } else if (value === "Boshlang'ich ta'lim") {
-                this.prices = [
-                    {
-                        txt: 'Sintqi',
-                        price: '12 000 000',
-                        id: 1,
-                    },
-                    {
-                        txt: 'Kundizgi',
-                        price: '9 800 000',
-                        id: 2
-                    },
-                ]
-            } else if (value === "Maktabgacha ta'lim") {
-                this.prices = [
-                    {
-                        txt: 'Sintqi',
-                        price: '12 000 000',
-                        id: 1,
-                    },
-                    {
-                        txt: 'Kundizgi',
-                        price: '9 800 000',
-                        id: 2
-                    },
-                ]
-            } else if (value === "I.T (dasturiy injinering)") {
-                this.prices = [
-                    {
-                        txt: 'Sintqi',
-                        price: '12 000 000',
-                        id: 1,
-                    },
-                    {
-                        txt: 'Kundizgi',
-                        price: '10 800 000',
-                        id: 2
-                    },
-                ]
-            } else if (value === 'Filalogigya') {
-                this.prices = [
-                    {
-                        txt: 'Kundizgi',
-                        price: '12 000 000',
-                        id: 2
-                    },
-                ]
-            }
+            const newData = this.data.filter(c => c.txt === value)[0].prices
+            this.prices = newData
         }
     },
     methods: {
@@ -284,7 +211,7 @@ export default {
         onSumbit() {
             if (this.second) {
                 if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang || !this.tuman2) {
-                    this.error = "Barcha maydonlar talab qilinadi";
+                    this.error = "Barcha maydonlarni to'ldirish talab qilinadi";
                     return;
                 }
                 const user = {
@@ -316,7 +243,7 @@ export default {
                     });
             } else {
                 if (!this.firstName || !this.lastName || !this.otchest || !this.birth_of_day) {
-                    this.error = 'Barcha maydonlar talab qilinadi'
+                    this.error = `Barcha maydonlar to'ldirish talab qilinadi`
                     return
                 }
                 this.second = true

@@ -4,7 +4,7 @@
             <div class="list">
                 <p class="title">Palite</p>
                 <div class="items">
-                    <a href="#">Universitet haqida</a>
+                    <a href="#">Institut haqida</a>
                     <a href="#">Ariza beruvchi</a>
                     <a href="#">Talabalar</a>
                     <a href="#">Kurslar</a>

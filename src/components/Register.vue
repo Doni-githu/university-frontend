@@ -32,24 +32,26 @@
                                 </select>
                             </div>
                             <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
-                            <div>
-                                <p>Ta'lim yonalishingiz</p>
-                                <div class="items" v-for="yonalish in yonalishlar" :key="yonalish.id">
-                                    <input type="radio" name="talim" @change="e => onChangeValue({ type: 'talim', e: e })"
-                                        :id="yonalish.id" :value="yonalish.txt">
-                                    <label :for="yonalish.id">{{ yonalish.txt }}</label>
-                                </div>
+                            <div class="form-floatw">
+                                <p>Ta'lim tili</p>
+                                <select @change="e => onChangeValue({ type: 'til', e: e })">
+                                    <option>Uzbek tili</option>
+                                    <option>Rus tili</option>
+                                </select>
                             </div>
-                            <div>
-                                <p>Talim turi</p>
-                                <div>
-                                    <div class="items" @click="e => onChangeValue({ type: 'yonalish', e: e })"
-                                        v-for="{ ...rest } in prices">
-                                        <input name="price" type="radio" :id="rest.id"
-                                            :value="`${rest.txt}. ${rest.price}`">
-                                        <label :for="rest.id">{{ rest.txt }} {{ rest.price }}</label>
-                                    </div>
-                                </div>
+                            <div class="form-floatw">
+                                <p>Ta'lim yonalishingiz</p>
+                                <select @change="e => onChangeValue({ type: 'talim', e: e })">
+                                    <option v-for="yonalish in yonalishlar" :value="`${yonalish.txt}`" :key="yonalish.id">{{
+                                        yonalish.txt }}</option>
+                                </select>
+                            </div>
+                            <div class="form-floatw">
+                                <p>Ta'lim turi</p>
+                                <select @change="e => onChangeValue({ type: 'talim', e: e })">
+                                    <option v-for="price in prices" :value="`${price.txt}. ${price.price}`" :key="price.id">{{
+                                        price.txt }} {{ price.price }}</option>
+                                </select>
                             </div>
                             <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
                         </div>
@@ -361,7 +363,7 @@ select {
     background-color: #fff;
 }
 
-select:focus{
+select:focus {
     outline-width: 4px;
 }
 
@@ -395,8 +397,9 @@ select:focus {
 .btn2 {
     padding: 10px 15px;
     border-radius: 5px;
-    background-color: transparent;
+    background-color: #495057;
     border: none;
+    color: #fff;
     transition: all .1s;
     outline: 2px solid #495057;
 }
@@ -407,8 +410,6 @@ select:focus {
     color: #fff;
 }
 
-.form {}
-
 .post {
     position: absolute;
     top: 0;
@@ -418,9 +419,11 @@ select:focus {
     .form2 {
         grid-template-columns: auto !important;
     }
-    form{
-        padding-top: 10px ;
+
+    form {
+        padding-top: 10px;
     }
+
     .items {
         color: #495057 !important;
     }

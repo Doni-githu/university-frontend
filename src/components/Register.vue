@@ -150,21 +150,21 @@ export default {
             ],
             birth_of_day: '',
             yonalish: "Moliya va moliyaviy texnologiyalar",
-            kontrat: '14 000 000',
+            kontrat: '11 800 000',
             prices: [
                 {
-                    txt: 'Sirtqi',
-                    price: '14 000 000',
-                    id: 1,
-                },
-                {
                     txt: 'Kunduzgi',
-                    price: '11 800 000',
+                    price: '14 000 000',
                     id: 2
                 },
                 {
+                    txt: 'Sirtqi',
+                    price: '11 800 000',
+                    id: 1,
+                },
+                {
                     txt: 'Masofaviy',
-                    price: '14 000 000',
+                    price: '11 800 000',
                     id: 3,
                 }
             ],
@@ -203,6 +203,7 @@ export default {
             } else if (type === "talim") {
                 this.yonalish = e.target.value
             } else if (type === 'yonalish') {
+                console.log(e.target.value)
                 this.price = e.target.value.split('. ')[0]
                 this.kontrat = e.target.value.split('. ')[1]
             } else if (type === 'til') {

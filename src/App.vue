@@ -24,17 +24,17 @@ export default {
         prices: [
           {
             txt: 'Kunduzgi',
-            price: '11 800 000',
+            price: '14 000 000',
             id: 2
           },
           {
             txt: 'Sirtqi',
-            price: '14 000 000',
+            price: '11 800 000',
             id: 1,
           },
           {
             txt: 'Masofaviy',
-            price: '14 000 000',
+            price: '11 800 000',
             id: 3,
           },
 
@@ -46,20 +46,19 @@ export default {
         prices: [
           {
             txt: 'Kunduzgi',
-            price: '11 800 000',
+            price: '14 000 000',
             id: 2
           },
           {
             txt: 'Sirtqi',
-            price: '14 000 000',
+            price: '11 800 000',
             id: 1,
           },
           {
             txt: 'Masofaviy',
-            price: '14 000 000',
+            price: '11 800 000',
             id: 3,
           },
-
         ]
       },
       {
@@ -67,19 +66,19 @@ export default {
         txt: 'Pedagogika va psixologiya',
         prices: [
           {
-            txt: 'Sirtqi',
+            txt: 'Kunduzgi',
             price: '12 000 000',
+            id: 2
+          },
+          {
+            txt: 'Sirtqi',
+            price: '9 800 000',
             id: 1,
           },
           {
             txt: 'Masofaviy',
-            price: '12 000 000',
-            id: 3,
-          },
-          {
-            txt: 'Kunduzgi',
             price: '9 800 000',
-            id: 2
+            id: 3,
           },
         ]
       },
@@ -88,20 +87,21 @@ export default {
         txt: "Boshlang'ich ta'lim",
         prices: [
           {
-            txt: 'Sirtqi',
+            txt: 'Kunduzgi',
             price: '12 000 000',
+            id: 2
+          },
+          {
+            txt: 'Sirtqi',
+            price: '9 800 000',
             id: 1,
           },
           {
             txt: 'Masofaviy',
-            price: '12 000 000',
+            price: '9 800 000',
             id: 3,
           },
-          {
-            txt: 'Kunduzgi',
-            price: '9 800 000',
-            id: 2
-          },
+
         ]
       },
       {
@@ -110,17 +110,17 @@ export default {
         prices: [
           {
             txt: 'Kunduzgi',
-            price: '10 800 000',
+            price: '12 00 000',
             id: 2
           },
           {
             txt: 'Sirtqi',
-            price: '12 000 000',
+            price: '10 800 000',
             id: 1,
           },
           {
             txt: 'Masofaviy',
-            price: '12 000 000',
+            price: '10 800 000',
             id: 3,
           },
         ]
@@ -168,7 +168,7 @@ export default {
 </script>
 <style>
 #app {
-  background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, .1), rgba(0, 0, 0, 0)), url('/back.png');
+  background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, .1), rgba(0, 0, 0, 0)), url('/ph.jpg');
   background-repeat: no-repeat;
   background-position: top;
   background-size: contain;

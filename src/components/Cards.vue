@@ -62,7 +62,8 @@ export default {
     justify-content: center;
     color: #fff;
     align-items: center;
-    background: var(--bs-primary);
+    background: #EEEDED;
+    color: #000;
     border-radius: 40px;
 }
 

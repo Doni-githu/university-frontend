@@ -1,7 +1,7 @@
 <template>
     <div class="kirish">
         <div class="box">
-            <h1>Nukus innovatsion instituti Guliston qabuli</h1>
+            <h1 style="font-weight: 600;">Nukus innovatsion instituti Guliston qabuli</h1>
             <div class="btn2">
                 <button>
                     <a href="#end2">Ta'lim yo'nalishlari</a>
@@ -20,7 +20,7 @@ export default {
     padding: 25px 30px;
     color: #fff;
     text-align: center;
-    background: linear-gradient(90deg, #2E1616 0%, rgba(109, 109, 109, 0) 100%);
+    background: rgba(39, 40, 40, 0.567);
     display: flex;
     flex-direction: column;
     gap: 15px;

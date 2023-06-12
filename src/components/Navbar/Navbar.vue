@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        <img src="/NII.png"  @click="() => $router.push('/')" style="font-weight: 300; width: 90px; height: 90px;" />
+        <img src="/NII.png"  @click="() => $router.push('/')" style="font-weight: 300; width: 90px; height: 90px; background-color: #fff; border-radius: 50%;" />
         <template v-if="!user">
             <div class="btn-group">
                 <button @click="() => $router.push('/login')" class="btn btn-primary">Kirish</button>

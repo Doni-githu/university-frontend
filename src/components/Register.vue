@@ -42,8 +42,9 @@
                             <div class="form-floatw">
                                 <p>Ta'lim turi</p>
                                 <select @change="e => onChangeValue({ type: 'yonalish', e: e })">
-                                    <option v-for="price in prices" :value="`${price.txt}. ${price.price}`" :key="price.id">{{
-                                        price.txt }}</option>
+                                    <option v-for="price in prices" :value="`${price.txt}. ${price.price}`" :key="price.id">
+                                        {{
+                                            price.txt }}</option>
                                 </select>
                             </div>
                             <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
@@ -318,9 +319,10 @@ select:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid red;
-    padding: 10px;border-radius: 15px;
-    background-color: #c3c3c36e;
+    padding: 10px;
+    color: #fff;
+    border-radius: 15px;
+    background-color: rgba(39, 40, 40, 0.567);
 }
 
 

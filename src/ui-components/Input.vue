@@ -60,8 +60,9 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 10px;border-radius: 15px;
-    background-color: #c3c3c36e;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(39, 40, 40, 0.567);
 }
 
 
@@ -78,7 +79,7 @@ p {
 
 label {
     font-style: normal;
-    color: #0e0e0e;
+    color: #fff;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;

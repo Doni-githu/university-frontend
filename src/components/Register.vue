@@ -281,7 +281,7 @@ export default {
         },
         onSumbit() {
             if (this.second) {
-                if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang || this.tuman2) {
+                if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang || !this.tuman2) {
                     this.error = "Barcha maydonlar talab qilinadi";
                     return;
                 }

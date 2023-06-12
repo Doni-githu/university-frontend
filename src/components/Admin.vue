@@ -42,12 +42,12 @@ export default {
             this.$router.push("/login");
         }
     },
-    updated () {
+    updated() {
         if (!localStorage.getItem('token')) {
             this.$router.push("/login");
         }
     },
-    
+
     data() {
         return {
             users: null
@@ -73,11 +73,22 @@ tr,
 td {
     border: 1px solid var(--black);
     color: var(--black);
+    transition: all .2s;
 }
+
+table:hover,
+td:hover,
+th:hover {
+    color: #000;
+    background-color: #fff;
+}
+
 
 tbody tr {
     cursor: pointer;
 }
+
+
 
 .users {
     width: 90%;
@@ -98,7 +109,7 @@ th {
 }
 
 @media only screen and (max-width:400px) {
-    .users{
+    .users {
         width: 100%;
     }
 }

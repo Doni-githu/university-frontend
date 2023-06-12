@@ -73,6 +73,7 @@ export default {
     margin: 0 auto;
     height: 100px;
     position: relative;
+
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -146,7 +147,8 @@ button {
 @media only screen and (max-width:363px){
     .navbar{
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
     }
 }
+
 </style>

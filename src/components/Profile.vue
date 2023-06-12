@@ -138,4 +138,29 @@ label {
     font-size: 16px;
     line-height: 24px;
 }
-</style>
+
+@media only screen and (max-width:612px) {
+    .container {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width:539px) {
+    .container {
+        width: 100% !important;
+        padding-bottom: 2rem;
+    }
+
+    form {
+        margin-top: 5px;
+    }
+
+    .flex {
+        gap: 7px;
+    }
+
+    .flex2 {
+        display: grid;
+        grid-template-columns: auto;
+    }
+}</style>

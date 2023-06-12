@@ -97,7 +97,7 @@ h1 {
 }
 
 .btn-group button:first-child:hover {
-    color: #fff;
+    color: #fff !important;
     border-color: transparent;
     background-color: var(--black);
 }
@@ -134,7 +134,7 @@ button {
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
     border: 2px solid var(--black);
-    color: #fff;
+    color: #fff !important;
 }
 
 .btn-group button:nth-child(2):hover {

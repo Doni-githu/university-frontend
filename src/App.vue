@@ -25,9 +25,10 @@ export default {
 </script>
 <style>
 #app {
-  background: linear-gradient(rgba(255, 255, 255, 0.51), rgba(0, 0, 0, 0)), url('/back.png');
+  background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, .1), rgba(0, 0, 0, 0)), url('/back.png');
   background-repeat: no-repeat;
   background-position: top;
+  background-size: contain;
 }
 
 main {
@@ -36,7 +37,13 @@ main {
   margin: 0 auto;
 }
 
-@media only screen and (max-width:577px) {
+@media only screen and (max-width:964px) {
+  #app{
+    background-size: initial;
+  }
+}
+
+@media only screen and (max-width:671px) {
   main {
     width: 95%;
   }

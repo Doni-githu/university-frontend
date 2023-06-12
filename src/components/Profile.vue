@@ -5,7 +5,7 @@
             <div class="left">
                 <h1 style="color: var(--black);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{
                     user.firstName }} {{
-        user.lastName }}</h1>
+        user.lastName }} {{ user.father_name }}</h1>
                 <form @submit.prevent>
                     <div class="flex2">
                         <div class="flex">
@@ -42,14 +42,16 @@
                             <label for="email">O'qish vaqti</label>
                             <input id="email" class="input" disabled :value="user.time" />
                         </div>
+                        <div class="flex">
+                            <label for="email">Tug'ulgan sana</label>
+                            <input id="email" class="input" disabled :value="user.date_of_birth" />
+                        </div>
                     </div>
                 </form>
             </div>
         </template>
         <template v-else>
-            <div style="display: flex; justify-content: center;">
-                <p>Loading</p>
-            </div>
+            <Loading />
         </template>
     </div>
 </template>

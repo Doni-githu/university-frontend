@@ -1,15 +1,15 @@
 <template>
     <div class="form-float">
+        <label :for="placeholder">{{ placeholder }}</label>
         <div style="display: flex; align-items: center;">
             <template v-if="placeholder === 'Telefon nomer'">
                 <p
-                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 10px 12px; background-color: var(--black); outline: 2px solid var(--black); color: #fff;">
+                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 10px 12px; background-color: var(--bs-gray-dark); outline: 2px solid var(--bs-gray-dark); color: #fff;">
                     +998</p>
             </template>
             <input :maxlength="maxlength" :class="placeholder === 'Telefon nomer' ? 'borderLeft' : ''" :type="type"
                 :id="placeholder" :value="modelValue" @input="onChangeInput">
         </div>
-        <label :for="placeholder">{{ placeholder }}</label>
     </div>
 </template>
 <script>
@@ -38,25 +38,29 @@ export default {
 input {
     width: 100%;
     padding: 10px 12px;
-    outline: 1.3px solid var(--black);
+    outline: 1.3px solid var(--bs-gray-dark);
     border-radius: 4px;
     border: none;
     background-color: transparent;
     font-size: 17px;
     transition: all .15s;
-    color: var(--black);
+    color: #fff;
 }
 
 input:focus {
-    outline: 4px solid var(--black);
+    outline: 4px solid var(--bs-gray-dark);
+    background-color: #fff;
+    color: #000;
 }
 
 .form-float {
     width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 10px;
 }
+
+
 
 p {
     margin-bottom: 0;
@@ -68,9 +72,11 @@ p {
 }
 
 label {
-    color: var(--black);
+    color: var(--bs-dark) !important;
     font-style: normal;
+    color: #fff;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-}</style>
+}
+</style>

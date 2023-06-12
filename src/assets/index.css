@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
     --green: #198754;
     --blue: #2A8CFF;
-    --black: rgb(0, 0, 0);
+    --black: #495057;
 }
 
 * {

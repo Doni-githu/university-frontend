@@ -1,63 +1,69 @@
 <template>
-    <div class="container">
-        <div class="left">
+    <template v-if="!isLoading">
+        <div class="container">
             <template v-if="error">
                 <Alert :type="'danger'" :error="error" />
             </template>
-            <template v-if="!id">
-                <form @submit.prevent>
-                    <div class="left-form">
-                        <Input :maxlength="50" :type="'text'" :placeholder="'Ism'" v-model="firstName" />
-                        <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
-                        <div class="form-floatw">
-                            <p>Manzil (viloyat) </p>
-                            <select @change="event => onChangeValue({ type: 'tuman', e: event })">
-                                <option v-for="viloyat in viloyatlar">{{ viloyat.tuman }}</option>
-                            </select>
+            <form @submit.prevent>
+                <div class="form">
+                    <template v-if="!second">
+                        <div class="form2">
+                            <Input :maxlength="50" :type="'text'" :placeholder="'Ismingiz'" v-model="firstName" />
+                            <Input :maxlength="50" :type="'text'" :placeholder="'Familiyangiz'" v-model="lastName" />
+                            <Input :maxlength="50" :type="'text'" :placeholder="`Ochistivangiz`" v-model="otchest" />
+                            <Input :maxlength="50" :type="'date'" :placeholder="`Tug'ilgan sana`" v-model="birth_of_day" />
                         </div>
-                        <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
-                        <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
-                    </div>
-                    <div class="right-form">
-                        <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
-                        <div class="form-floatw">
-                            <p>Talim tili</p>
-                            <select @change="e => onChangeValue({ type: 'til', e: e })">
-                                <option>Uzbek tili</option>
-                                <option>Rus tili</option>
-                            </select>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
-                            <p>Talim yonalishi</p>
-                            <div v-for="yonalish in yonalishlar" :key="yonalish.id" style="display: flex; gap: 5px;">
-                                <input type="radio" name="talim" @change="e => onChangeValue({ type: 'talim', e: e })"
-                                    :id="yonalish.id" :value="yonalish.txt">
-                                <label :for="yonalish.id">{{ yonalish.txt }}</label>
+                    </template>
+                    <template v-else>
+                        <div class="form2">
+                            <div class="form-floatw">
+                                <p>Manzil (hudud) </p>
+                                <select @change="event => onChangeValue({ type: 'tuman', e: event })">
+                                    <option v-for="viloyat in viloyatlar">{{ viloyat.tuman }}</option>
+                                </select>
                             </div>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
-                            <p>Talim vaqti</p>
-                            <div @click="e => onChangeValue({ type: 'yonalish', e: e })" v-for="{ ...rest } in prices"
-                                style="display: flex; gap: 5px;">
-                                <input name="price" type="radio" :id="rest.id" :value="`${rest.txt}. ${rest.price}`">
-                                <label :for="rest.id">{{ rest.txt }} {{ rest.price }}</label>
+                            <Input :maxlength="50" :type="'text'" :placeholder="'Tuman (shahar)'" />
+                            <Input :maxlength="9" :type="'text'" :placeholder="'Passport seriayasi'" v-model="passport" />
+                            <div class="form-floatw">
+                                <p>Talim tili</p>
+                                <select @change="e => onChangeValue({ type: 'til', e: e })">
+                                    <option>Uzbek tili</option>
+                                    <option>Rus tili</option>
+                                </select>
                             </div>
+                            <Input :maxlength="9" :type="'number'" :placeholder="'Telefon nomer'" v-model="number" />
+                            <div>
+                                <p>Talim yonalishingiz</p>
+                                <div class="items" v-for="yonalish in yonalishlar" :key="yonalish.id">
+                                    <input type="radio" name="talim" @change="e => onChangeValue({ type: 'talim', e: e })"
+                                        :id="yonalish.id" :value="yonalish.txt">
+                                    <label :for="yonalish.id">{{ yonalish.txt }}</label>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Talim turi</p>
+                                <div>
+                                    <div class="items" @click="e => onChangeValue({ type: 'yonalish', e: e })"
+                                        v-for="{ ...rest } in prices">
+                                        <input name="price" type="radio" :id="rest.id"
+                                            :value="`${rest.txt}. ${rest.price}`">
+                                        <label :for="rest.id">{{ rest.txt }} {{ rest.price }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />
                         </div>
-                    </div>
-                    <div class="end">
-                        <button @click="onSumbit" style="width: 100%; margin-top: 2rem; margin-bottom: 2rem;"
-                            class="btn2">Royxattan o'tish</button>
-                    </div>
-                </form>
-            </template>
-            <template v-else>
-                <form @submit.prevent>
-                    <Input :type="'text'" :placeholder="'Kodni yozing'" v-model="token" />
-                    <button @click="onSumbitCode" class="btn btn-outline-primary">Otish</button>
-                </form>
-            </template>
+                    </template>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button @click="onSumbit" class="btn2">{{ second ? "Royhattan o'tish" : 'Davom etish ' }}</button>
+                </div>
+            </form>
         </div>
-    </div>
+    </template>
+    <template v-else>
+        <Loading />
+    </template>
 </template>
 <script>
 import Alert from '../ui-components/Alert.vue';
@@ -146,6 +152,7 @@ export default {
                     id: 7
                 }
             ],
+            birth_of_day: '',
             yonalish: "Moliya va moliyaviy tenxnalogiyalar",
             kontrat: '14 000 000',
             prices: [
@@ -160,12 +167,17 @@ export default {
                     id: 2
                 },
             ],
+            second: false,
+            thred: false,
+            tuman2: '',
+            otchest: '',
             lang: 'Rus tili',
             passport: "",
             error: "",
             price: "Sintqi",
             rePassword: '',
-            userToken: ""
+            userToken: "",
+            isLoading: false,
         };
     },
     beforeCreate() {
@@ -259,7 +271,6 @@ export default {
             else if (type === "tuman") {
                 this.tuman = e.target.value;
             } else if (type === "talim") {
-                console.dir(e.target)
                 this.yonalish = e.target.value
             } else if (type === 'yonalish') {
                 this.price = e.target.value.split('. ')[0]
@@ -269,31 +280,43 @@ export default {
             }
         },
         onSumbit() {
-            if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang) {
-                this.error = "Barcha maydonlar talab qilinadi";
-                return;
+            if (this.second) {
+                if (!this.firstName || !this.lastName || !this.tuman || !this.passport || !this.number || !this.price || !this.lang) {
+                    this.error = "Barcha maydonlar talab qilinadi";
+                    return;
+                }
+                const user = {
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    phone: `+998${this.number}`,
+                    password: this.password,
+                    passport: this.passport,
+                    place: {
+                        region: this.tuman,
+                        tuman: this.tuman2
+                    },
+                    type: this.yonalish,
+                    lang: this.lang,
+                    time: this.price,
+                    price: this.kontrat,
+                    rol: 'student',
+                    date_of_birth: this.birth_of_day,
+                    father_name: this.otchest
+                };
+                this.$store.dispatch("register", user)
+                    .then((res) => {
+                        this.$router.push(`/profile/${res._id}`)
+                    }).catch((err) => {
+                        this.error = err.message;
+                    });
+            } else {
+                if (!this.firstName || !this.lastName || !this.otchest || !this.birth_of_day) {
+                    this.error = 'Barcha maydonlar talab qilinadi'
+                    return
+                }
+                this.second = true
+                this.error = ''
             }
-            const user = {
-                firstName: this.firstName,
-                lastName: this.lastName,
-                phone: `+998${this.number}`,
-                password: this.password,
-                passport: this.passport,
-                place: {
-                    region: this.tuman
-                },
-                type: this.yonalish,
-                lang: this.lang,
-                time: this.price,
-                price: this.kontrat,
-                rol: 'student'
-            };
-            this.$store.dispatch("register", user)
-                .then((res) => {
-                    this.$router.push(`/profile/${res._id}`)
-                }).catch((err) => {
-                    this.error = err.message;
-                });
         },
         onSumbitCode() {
             if (!this.token) {
@@ -313,146 +336,87 @@ export default {
 }
 </script>
 <style scoped>
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.left {
-    width: 50%;
-}
-
-.left-form {
-    grid-area: left;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.right-form {
-    grid-area: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 5px;
-}
-
-.btn2 {
-    padding: 10px 15px;
-    font-weight: 400;
-    font-size: 16px;
-    background-color: transparent;
-    border: none;
-    color: #fff !important;
-    outline: 2px solid #000;
-    border-radius: 4px;
-    transition: all .1s;
-}
-
-.btn2:hover {
-    outline: 4px solid #000;
-}
-
-.end {
-    grid-area: end;
-}
-
-.right {
-    width: 50%;
-}
-
-select {
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    width: 100%;
-    background-color: transparent;
-    outline: 2px solid #000;
-    transition: all .1s;
-    color: #000;
-    border-radius: 5px;
-}
-
-* {
-    color: #000 !important;
-}
-
-select:focus {
-    outline: 4px solid #000;
-}
-
-.form-floatw {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    color: #000;
-}
-
-.right img {
-    width: 80%;
-    height: 100%;
-}
-
 form {
-    width: 100%;
-    display: grid;
-    grid-template-areas:
-        "left right"
-        "end end";
-    column-gap: 16px;
-}
-
-.flex {
+    position: relative;
+    padding: 50px 0;
     display: flex;
+    width: 100%;
+    flex-direction: column;
     gap: 20px;
 }
 
-
-@media only screen and (max-width:1200px) {
-    .container {
-        flex-direction: column-reverse;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .left {
-        width: 80%;
-    }
-
-    .right {
-        width: 80%;
-    }
+select {
+    width: 100%;
+    padding: 10px 12px;
+    outline: 1.3px solid var(--black);
+    border-radius: 4px;
+    border: none;
+    background-color: transparent;
+    font-size: 17px;
+    transition: all .15s;
+    color: #495057;
 }
 
-@media only screen and (max-width:667px) {
-    .left {
-        width: 100%;
-    }
-
-    .right {
-        width: 100%;
-    }
+select:focus{
+    outline-width: 4px;
+    background-color: #fff;
+    color: #000;
 }
 
-@media only screen and (max-width:500px) {
-    form {
-        grid-template-areas: 
-        "left"
-        "right"
-        "end";
-        width: 100%;
+.form2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.items {
+    display: flex;
+    gap: 5px;
+    color: #fff;
+}
+
+select:focus {
+    outline: 4px solid var(--bs-gray-black);
+}
+
+.form-floatw {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.btn2 {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    transition: all .1s;
+    outline: 2px solid #495057;
+}
+
+.btn2:hover {
+    outline-width: 4px;
+    background-color: #495057;
+    color: #fff;
+}
+
+.form {}
+
+.post {
+    position: absolute;
+    top: 0;
+}
+
+@media only screen and (max-width:780px) {
+    .form {
+        grid-template-columns: auto auto;
     }
 
-
-    .btn2{
-        color: #000 !important;
-    }
-
-    .flex {
-        flex-wrap: wrap;
+    .items {
+        color: #495057 !important;
     }
 }
 </style>

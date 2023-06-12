@@ -33,7 +33,7 @@
                             </div>
                             <Input :maxlength="9" :type="'number'" :placeholder="'Telefon raqam'" v-model="number" />
                             <div class="form-floatw">
-                                <p>Ta'lim yonalishi</p>
+                                <p>Ta'lim yo'nalishi</p>
                                 <select @change="e => onChangeValue({ type: 'talim', e: e })">
                                     <option v-for="yonalish in yonalishlar" :value="`${yonalish.txt}`" :key="yonalish.id">{{
                                         yonalish.txt }}</option>
@@ -237,7 +237,7 @@ export default {
                 this.$store.dispatch("register", user)
                     .then((res) => {
                         this.isLoading = false
-                        this.$router.push(`/profile/${res._id}`)
+                        this.$router.push(`/profile/${res._id}?message=MUVAFAQIYATLI RO'YXATDAN O'TTINGIZ`)
                     }).catch((err) => {
                         this.isLoading = false
                         this.error = err.message;

@@ -60,12 +60,15 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;border-radius: 15px;
+    background-color: #c3c3c36e;
 }
 
 
 
 p {
     margin-bottom: 0;
+    color: #000;
 }
 
 .borderLeft {
@@ -74,9 +77,8 @@ p {
 }
 
 label {
-    color: var(--bs-dark) !important;
     font-style: normal;
-    color: #fff;
+    color: #0e0e0e;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;

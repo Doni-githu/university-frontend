@@ -5,12 +5,9 @@
                 <h3 class="p1">{{ item.txt }}</h3>
                 <em class="p2">faoliyat yo'nalishi bo'yicha</em>
                 <p class="p3">TA'LIM SHAKLLARI</p>
-                <div class="time">
-                    <p v-for="price in item.prices" :key="price.id">{{ price.txt }}</p>
-                </div>
-                <p>To'lov shartnoma</p>
-                <div class="time">
-                    <p v-for="price in item.prices" :key="price.id">{{ price.price }}</p>
+                <div style="display: grid; grid-template-columns: auto auto auto; column-gap: 15px;">
+                    <p v-for="price in item.prices">{{ price.txt }}</p>
+                    <p v-for="price in item.prices">{{ price.price }}</p>
                 </div>
             </div>
         </div>
@@ -63,17 +60,18 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #fff;
     align-items: center;
-    background: #EEEDED;
-    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.25);
+    background: var(--bs-primary);
     border-radius: 40px;
 }
 
 @media only screen and (max-width:1000px) {
-    .cards{
+    .cards {
         justify-content: space-between;
     }
-    .cards-container{
+
+    .cards-container {
         justify-content: center;
     }
 }

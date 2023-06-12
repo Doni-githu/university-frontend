@@ -23,6 +23,11 @@ export default {
         id: 0,
         prices: [
           {
+            txt: 'Kunduzgi',
+            price: '11 800 000',
+            id: 2
+          },
+          {
             txt: 'Sirtqi',
             price: '14 000 000',
             id: 1,
@@ -32,11 +37,7 @@ export default {
             price: '14 000 000',
             id: 3,
           },
-          {
-            txt: 'Kunduzgi',
-            price: '11 800 000',
-            id: 2
-          },
+
         ]
       },
       {
@@ -44,6 +45,11 @@ export default {
         txt: 'Buxgalteriya hisobi va audit',
         prices: [
           {
+            txt: 'Kunduzgi',
+            price: '11 800 000',
+            id: 2
+          },
+          {
             txt: 'Sirtqi',
             price: '14 000 000',
             id: 1,
@@ -53,11 +59,7 @@ export default {
             price: '14 000 000',
             id: 3,
           },
-          {
-            txt: 'Kunduzgi',
-            price: '11 800 000',
-            id: 2
-          },
+
         ]
       },
       {
@@ -107,14 +109,14 @@ export default {
         txt: "I.T (dasturiy injiniring)",
         prices: [
           {
-            txt: 'Sirtqi',
-            price: '12 000 000',
-            id: 1,
-          },
-          {
             txt: 'Kunduzgi',
             price: '10 800 000',
             id: 2
+          },
+          {
+            txt: 'Sirtqi',
+            price: '12 000 000',
+            id: 1,
           },
           {
             txt: 'Masofaviy',

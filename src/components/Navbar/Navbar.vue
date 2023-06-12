@@ -1,10 +1,10 @@
 <template>
     <div class="navbar">
-        <img src="/NII.png"  @click="() => $router.push('/')" style="font-weight: 300; width: 60px; height: 60px;" />
+        <img src="/NII.png"  @click="() => $router.push('/')" style="font-weight: 300; width: 90px; height: 90px;" />
         <template v-if="!user">
             <div class="btn-group">
-                <button @click="() => $router.push('/login')">Kirish</button>
-                <button @click="() => $router.push('/register')">Ro'yxatdan o'tish</button>
+                <button @click="() => $router.push('/login')" class="btn btn-primary">Kirish</button>
+                <button @click="() => $router.push('/register')" class="btn btn-primary" >Ro'yxatdan o'tish</button>
             </div>
         </template>
         <template v-else>
@@ -69,14 +69,16 @@ export default {
 </script>
 <style scoped>
 .navbar {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    height: 100px;
+    height: auto;
     position: relative;
 
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-color: rgba(39, 40, 40, 0.567);
+    padding: 10px 0;
 }
 
 h1 {
@@ -90,28 +92,6 @@ h1 {
     display: flex;
 }
 
-.btn-group button:first-child {
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    border: 2px solid var(--black);
-    color: #fff;
-}
-
-.btn-group button:first-child:hover {
-    color: #fff !important;
-    border-color: transparent;
-    background-color: var(--black);
-}
-
-button {
-    cursor: pointer;
-    user-select: none;
-    padding: 7px 12px;
-    outline: none;
-    font-size: 17px;
-    transition: all .18s;
-    background-color: transparent;
-}
 
 .pos {
     position: absolute;
@@ -129,19 +109,6 @@ button {
     color: #fff;
     cursor: pointer;
     padding: 5px 10px;
-}
-
-.btn-group button:nth-child(2) {
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    border: 2px solid var(--black);
-    color: #fff !important;
-}
-
-.btn-group button:nth-child(2):hover {
-    color: #fff;
-    border-color: transparent;
-    background-color: var(--black);
 }
 
 @media only screen and (max-width:363px){

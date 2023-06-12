@@ -144,6 +144,9 @@ button {
 }
 
 @media only screen and (max-width:363px){
-    
+    .navbar{
+        display: flex;
+        flex-direction: column;
+    }
 }
 </style>

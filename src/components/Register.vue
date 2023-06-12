@@ -367,6 +367,8 @@ select:focus{
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-around;
+    row-gap: 20px;
+    column-gap: 10px;
     width: 100%;
 }
 
@@ -411,10 +413,12 @@ select:focus {
 }
 
 @media only screen and (max-width:780px) {
-    .form {
-        grid-template-columns: auto auto;
+    .form2 {
+        grid-template-columns: auto !important;
     }
-
+    form{
+        padding-top: 10px ;
+    }
     .items {
         color: #495057 !important;
     }

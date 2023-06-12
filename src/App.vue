@@ -127,7 +127,7 @@ export default {
       },
       {
         id: 5,
-        txt: "Filologiya",
+        txt: "Filalogiya (ingliz tili)",
         prices: [
           {
             txt: 'Kunduzgi',

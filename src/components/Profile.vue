@@ -6,7 +6,9 @@
                 <h1 style="color: var(--black);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{
                     user.firstName }} {{
         user.lastName }} {{ user.father_name }}</h1>
-                <Alert :type="'success'" :error="$route.params.message.toLowerCase()" />
+                <template v-if="$route.params.message">
+                    <Alert :type="'success'" :error="$route.params.message" />
+                </template>
                 <form @submit.prevent>
                     <div class="flex2">
                         <div class="flex">

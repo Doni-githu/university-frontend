@@ -318,6 +318,9 @@ select:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border: 1px solid red;
+    padding: 10px;border-radius: 15px;
+    background-color: #c3c3c36e;
 }
 
 

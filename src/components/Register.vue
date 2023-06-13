@@ -237,7 +237,7 @@ export default {
                 this.$store.dispatch("register", user)
                     .then((res) => {
                         this.isLoading = false
-                        this.$router.push(`/profile/${res._id}?message=MUVAFAQIYATLI RO'YXATDAN O'TTINGIZ`)
+                        this.$router.push(`/profile/${res._id}?message=Muvaffaqiyatli RO'YXATDAN O'TTINGIZ`)
                     }).catch((err) => {
                         this.isLoading = false
                         this.error = err.message;

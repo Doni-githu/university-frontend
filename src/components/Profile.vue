@@ -3,12 +3,10 @@
         <template v-if="!isLoadingProfile && user">
 
             <div class="left">
-                <h1 style="color: var(--black);">{{ !profile ? '' : profile._id === user._id ? 'Salom' : '' }} {{
+                <h1 style="color: var(--black); width: 60%;">{{ $route.query.message.split(' ').map((item) => item.charAt(0) + item.slice(1).toLowerCase()).join(' ') }} {{
                     user.firstName }} {{
         user.lastName }} {{ user.father_name }}</h1>
-                <template v-if="$route.params.message">
-                    <Alert :type="'success'" :error="$route.params.message" />
-                </template>
+                    <Alert :type="'success'" :error="$route.query.message" />
                 <form @submit.prevent>
                     <div class="flex2">
                         <div class="flex">
@@ -94,9 +92,10 @@ input {
     outline: 1.3px solid var(--black);
     border-radius: 4px;
     border: none;
+    background-color: transparent;
     font-size: 17px;
     transition: all .15s;
-    color: var(--black);
+    color: #fff;
 }
 
 form {
@@ -123,6 +122,13 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(39, 40, 40, 0.567);
 }
 
 input:focus {
@@ -141,7 +147,7 @@ input:focus {
 }
 
 label {
-    color: var(--black);
+    color: #fff;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

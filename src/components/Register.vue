@@ -6,7 +6,7 @@
             </template>
             <form @submit.prevent>
                 <div class="form">
-                    <template v-if="second">
+                    <template v-if="!second">
                         <div class="form2">
                             <Input :maxlength="50" :type="'text'" :placeholder="'Ismi'" v-model="firstName" />
                             <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />

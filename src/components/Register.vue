@@ -6,7 +6,7 @@
             </template>
             <form @submit.prevent>
                 <div class="form">
-                    <template v-if="!second">
+                    <template v-if="second">
                         <div class="form2">
                             <Input :maxlength="50" :type="'text'" :placeholder="'Ismi'" v-model="firstName" />
                             <Input :maxlength="50" :type="'text'" :placeholder="'Familiya'" v-model="lastName" />
@@ -31,7 +31,7 @@
                                     <option>Rus tili</option>
                                 </select>
                             </div>
-                            <Input :maxlength="9" :type="'number'" :placeholder="'Telefon raqam'" v-model="number" />
+                            <Input :maxlength="9" :type="'tel'" :placeholder="'Telefon raqam'" v-model="number" />
                             <div class="form-floatw">
                                 <p>Ta'lim yo'nalishi</p>
                                 <select @change="e => onChangeValue({ type: 'talim', e: e })">
@@ -43,8 +43,7 @@
                                 <p>Ta'lim turi</p>
                                 <select @change="e => onChangeValue({ type: 'yonalish', e: e })">
                                     <option v-for="price in prices" :value="`${price.txt}. ${price.price}`" :key="price.id">
-                                        {{
-                                            price.txt }}</option>
+                                        {{ price.txt }}</option>
                                 </select>
                             </div>
                             <Input :maxlength="120" :type="'password'" :placeholder="'Parol'" v-model="password" />

@@ -8,17 +8,17 @@
                     <a href="#">Ariza beruvchi</a>
                     <a href="#">Talabalar</a>
                     <a href="#">Kurslar</a>
-                    <a href="#">Kontaktlar</a>
+                    <p href="#">Bog'lanish uchun telefon raqam +998500016555</p>
                 </div>
             </div>
             <div class="buttons">
                 <p class="title">Obuna bo'ling</p>
                 <div class="items2">
-                    <a href="#">
+                    <a href="https://t.me/nukusinnovatsioninstitut">
                         <img src="/tele.png" alt="Telegram">
                         <span>Telegram</span>
                     </a>
-                    <a href="#">
+                    <a href="https://www.instagram.com/nukus.innovatsion.institute/">
                         <img src="/insta.png" alt="Instagram">
                         <span>Instagram</span>
                     </a>
@@ -78,7 +78,8 @@ footer .footer-container {
     gap: 12px;
 }
 
-.items a {
+.items a,
+.items p{
     color: #FFFFFF;
     cursor: pointer;
     user-select: none;

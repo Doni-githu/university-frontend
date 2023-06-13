@@ -172,7 +172,7 @@ export default {
             thred: false,
             tuman2: '',
             otchest: '',
-            lang: 'Rus tili',
+            lang: "O'zbek tili",
             passport: "",
             error: "",
             price: "Sirtqi",
